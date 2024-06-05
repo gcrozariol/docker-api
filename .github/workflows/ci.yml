@@ -63,7 +63,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:latest,${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }},${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:latest
 
       # - name: Build Docker image
       #   run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
