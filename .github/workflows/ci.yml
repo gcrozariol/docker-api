@@ -9,18 +9,15 @@ jobs:
   build:
     name: 'Build and push'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16, 18, 20, 22]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Install Node.js ${{ matrix.node-version }}
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -63,6 +60,6 @@ jobs:
         run: docker build -t rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
 
       
