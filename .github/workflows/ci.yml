@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
