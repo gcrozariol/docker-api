@@ -60,7 +60,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::269624241181:role/ecr-role
+          role-to-assume: ${{ secrets.AWS_CREDENTIALS_ROLE }}
           aws-region: us-east-2
     
       - name: Login to AWS ECR
@@ -83,8 +83,8 @@ jobs:
         with: 
           service: docker-api
           image: ${{ steps.build-docker-image.outputs.image }}
-          access-role-arn: arn:aws:iam::269624241181:role/app-runner-role
+          access-role-arn: ${{ secrets.AWS_APP_RUNNER_ROLE }}
           region: us-east-2
           cpu: 1
-          memory: 1
+          memory: 2
           port: 3000
