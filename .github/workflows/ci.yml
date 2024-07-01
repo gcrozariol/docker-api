@@ -51,6 +51,11 @@ jobs:
       - name: Run tests
         run: pnpm test
 
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
       - name: Generate tag
         id: generate_tag
         run:  |
@@ -91,7 +96,7 @@ jobs:
           cpu: 1
           memory: 2
           port: 3000
-          wait-for-service-stability-seconds: 180 
+          wait-for-service-stability-seconds: 180
 
       - name: App Runner Check
         run: echo 'App Runner running... ${{ steps.deploy-app-runner.outputs.service-url }}'
