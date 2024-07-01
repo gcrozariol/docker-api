@@ -74,9 +74,8 @@ jobs:
           TAG: ${{ steps.generate_tag.outputs.sha }}
         run: | 
           docker build -t $REGISTRY/docker-ci:$TAG .
-          docker push $REGISTRY/docker-ci:$TAG
           docker tag $REGISTRY/docker-ci:$TAG $REGISTRY/docker-ci:latest
-          docker push $REGISTRY/docker-ci:latest
+          docker push --all-tags
           IMAGE=$(echo $REGISTRY/docker-ci:$TAG)
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
 
