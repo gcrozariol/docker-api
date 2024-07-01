@@ -91,6 +91,7 @@ jobs:
           cpu: 1
           memory: 2
           port: 3000
+          wait-for-service-stability-seconds: 180 
 
       - name: App Runner Check
         run: echo 'App Runner running... ${{ steps.deploy-app-runner.outputs.service-url }}'
