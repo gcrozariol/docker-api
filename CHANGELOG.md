@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/gcrozariol/docker-api/compare/v1.0.0...v1.0.1) (2024-07-01)
+
+
+### Bug Fixes
+
+* permissions ([44aed4d](https://github.com/gcrozariol/docker-api/commit/44aed4d98b9f30bc98caa0a2ae5ccd4cf9936def))
+
 # 1.0.0 (2024-07-01)
 
 
